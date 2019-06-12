@@ -1,5 +1,7 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
+import * as actions from "./redux/actions";
+import { connect } from "react-redux";
 
 const TodoForm = props => {
   const { value, saveTodo, updateValue } = props;
@@ -14,11 +16,19 @@ const TodoForm = props => {
         type="text"
         placeholder="Start typing…"
         margin="normal"
-        onChange={updateValue}
+        onChange={e => updateValue(e.target.value)}
         value={value}
       />
     </form>
   );
 };
+const mapStateToProps = ({ todoReducer }) => {
+  console.log(todoReducer.todos);
+  const { value } = todoReducer;
+  return { value };
+};
 
-export default TodoForm;
+export default connect(
+  mapStateToProps,
+  actions
+)(TodoForm);

@@ -6,3 +6,10 @@ export const updateValue = value => {
     payload: value
   };
 };
+
+export const saveTodo = () => {
+  return {
+    type: SAVE_TODO,
+    payload: null
+  };
+};

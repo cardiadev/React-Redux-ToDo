@@ -6,5 +6,27 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-  return state;
+  switch (action.type) {
+    case UPDATE_VALUE:
+      return {
+        ...state,
+        value: action.payload
+      };
+    case SAVE_TODO:
+      return state.value
+        ? {
+            ...state,
+            value: "",
+            todos: [
+              ...state.todos,
+              {
+                value: state.value,
+                completed: false
+              }
+            ]
+          }
+        : state;
+    default:
+      return state;
+  }
 };
