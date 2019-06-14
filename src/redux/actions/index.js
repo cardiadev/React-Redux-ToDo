@@ -1,4 +1,9 @@
-import { UPDATE_VALUE, SAVE_TODO } from "./actionTypes.js";
+import {
+  UPDATE_VALUE,
+  SAVE_TODO,
+  DELETE_TODO
+  // TOGGLE_COMPLETED
+} from "./actionTypes.js";
 
 export const updateValue = value => {
   return {
@@ -11,5 +16,11 @@ export const saveTodo = () => {
   return {
     type: SAVE_TODO,
     payload: null
+  };
+};
+export const deleteTodo = index => {
+  return {
+    type: DELETE_TODO,
+    payload: index
   };
 };

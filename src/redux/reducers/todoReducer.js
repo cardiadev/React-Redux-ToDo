@@ -26,6 +26,15 @@ export default (state = INITIAL_STATE, action) => {
             ]
           }
         : state;
+    case DELETE_TODO:
+      return {
+        ...state,
+        todos: [todos.filter()]
+      };
+
+    case TOGGLE_COMPLETED:
+      return {};
+    // End of Swith
     default:
       return state;
   }

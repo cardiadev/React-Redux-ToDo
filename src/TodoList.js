@@ -6,6 +6,8 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
+import * as actions from "./redux/actions";
+import { connect } from "react-redux";
 
 const TodoList = props => {
   const { todos, deleteTodo, toggleCompleted } = props;
@@ -23,8 +25,15 @@ const TodoList = props => {
   ));
   return <List>{formattedTodos}</List>;
 };
+const mapStateToProps = ({ todoReducer }) => {
+  const { todos } = todoReducer;
+  return todos;
+};
 
-export default TodoList;
+export default connect(
+  mapStateToProps,
+  actions
+)(TodoList);
 
 /**
 const array = [1, 2, 3, 4];
