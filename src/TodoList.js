@@ -27,7 +27,7 @@ const TodoList = props => {
 };
 const mapStateToProps = ({ todoReducer }) => {
   const { todos } = todoReducer;
-  return todos;
+  return { todos };
 };
 
 export default connect(

@@ -24,6 +24,7 @@ function App() {
 
       <Grid container justify="center">
         <Grid item md={8} sm={10} xs={10}>
+          <TodoList />
           {/* <TodoList
             todos={this.state.todos}
             deleteTodo={this.deleteTodo}

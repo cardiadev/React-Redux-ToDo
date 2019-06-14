@@ -1,8 +1,8 @@
 import {
   UPDATE_VALUE,
   SAVE_TODO,
-  DELETE_TODO
-  // TOGGLE_COMPLETED
+  DELETE_TODO,
+  TOGGLE_COMPLETED
 } from "./actionTypes.js";
 
 export const updateValue = value => {
@@ -21,6 +21,12 @@ export const saveTodo = () => {
 export const deleteTodo = index => {
   return {
     type: DELETE_TODO,
+    payload: index
+  };
+};
+export const toggleCompleted = index => {
+  return {
+    type: TOGGLE_COMPLETED,
     payload: index
   };
 };

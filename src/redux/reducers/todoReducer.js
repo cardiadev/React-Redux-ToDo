@@ -1,4 +1,9 @@
-import { UPDATE_VALUE, SAVE_TODO } from "../actions/actionTypes.js";
+import {
+  UPDATE_VALUE,
+  SAVE_TODO,
+  DELETE_TODO,
+  TOGGLE_COMPLETED
+} from "../actions/actionTypes.js";
 
 const INITIAL_STATE = {
   value: "",
@@ -6,6 +11,7 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
+  const todos = JSON.parse(JSON.stringify(state.todos));
   switch (action.type) {
     case UPDATE_VALUE:
       return {
@@ -29,11 +35,17 @@ export default (state = INITIAL_STATE, action) => {
     case DELETE_TODO:
       return {
         ...state,
-        todos: [todos.filter()]
+        todos: state.todos.filter(
+          (currentValue, index) => action.payload !== index
+        )
       };
 
     case TOGGLE_COMPLETED:
-      return {};
+      todos[action.payload].completed = !todos[action.payload].completed;
+      return {
+        ...state,
+        todos
+      };
     // End of Swith
     default:
       return state;
